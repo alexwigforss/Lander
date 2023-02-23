@@ -16,8 +16,12 @@
                     $"Hufvudstad: {huvudstad}\n    " +
                     $"Invånare: {invånarantal}\n\n");
             }
-            public void PrintOnly(string what)
+            public void PrintOnly(string what, int i = -1)
             {
+                if (i >= 0)
+                {
+                    Console.Write($"Index: {i} ");
+                }
                 switch (what)
                 {
                     case "Land":
@@ -35,6 +39,10 @@
                     default:
                         Console.Write($"Ej godkänd parameter");
                         break;
+                }
+                if (i >= 0)
+                {
+                    Console.Write($"\n");
                 }
             }
         }
@@ -73,13 +81,23 @@
             // Array.ForEach(countries, action);
 
             // 13 Skapa en for-loop som listar alla republiker (d.v.s. skriver ut endast namnet på dem).
-            var republics = from l in countries where l.styrestyp == "republik" select l;
-
+            var republics = (from l in countries where l.styrestyp == "republik" select l).ToArray();
             foreach (Land item in republics)
             {
                 item.PrintOnly("Land");
             }
-            Console.WriteLine("\när alla republiker.");
+            Console.WriteLine("\när alla republiker.\n");
+            // 14. Ändra loopen så att den även listar indexet. Stagea, committa och pusha!
+            
+            // Hoppsan... det skulle visst va en vanlig forloop ovan
+            // Nåväl, gör en nu ist. Behåller ovan som refferens för from-where
+            for (int i = 0; i < countries.Length ; i++)
+            {
+                if (countries[i].styrestyp == "republik" )
+                countries[i].PrintOnly("Land",i);
+            }
+            Console.WriteLine("\när alla republiker.\n");
+
         }
         private static void Print(Land p)
         {
@@ -92,7 +110,6 @@
     }
 }
 
-//Stagea, committa och pusha!
 //14. Ändra loopen så att den även listar indexet. Stagea, committa och pusha!
 //15. Gör en for-loop som letar reda på republiken med minsta och största invånarantal och
 //skriver ut endast dessa, med en utskrift likt:
