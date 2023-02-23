@@ -1,4 +1,6 @@
-﻿namespace D14_1_1_Länder
+﻿using System.Diagnostics;
+
+namespace D14_1_1_Länder
 {
     internal class Program
     {
@@ -81,24 +83,46 @@
             // Array.ForEach(countries, action);
 
             // 13 Skapa en for-loop som listar alla republiker (d.v.s. skriver ut endast namnet på dem).
+            // https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/where-clause
+
             var republics = (from l in countries where l.styrestyp == "republik" select l).ToArray();
             foreach (Land item in republics)
             {
                 item.PrintOnly("Land");
             }
             Console.WriteLine("\när alla republiker.\n");
-            // 14. Ändra loopen så att den även listar indexet. Stagea, committa och pusha!
-            
+            // 14. Ändra loopen så att den även listar indexet.
             // Hoppsan... det skulle visst va en vanlig forloop ovan
-            // Nåväl, gör en nu ist. Behåller ovan som refferens för from-where
-            for (int i = 0; i < countries.Length ; i++)
+            // Nåväl, gör en nu ist. Behåller ovan som exempel på filter
+
+            for (int i = 0; i < countries.Length; i++)
             {
-                if (countries[i].styrestyp == "republik" )
-                countries[i].PrintOnly("Land",i);
+                if (countries[i].styrestyp == "republik")
+                    countries[i].PrintOnly("Land", i);
             }
             Console.WriteLine("\när alla republiker.\n");
+            
+            // 15. Gör en for-loop som letar reda på republiken med minsta och största invånarantal och
+            // Ok, då, jag gör väl en for-loop men filtrerar först så den blir så kort som möjligt
 
+            Land[] minmax = MinMaxPopulation(countries);
+            for (int i = 0; i < minmax.Length; i++)
+            {
+                string? x = i == 0 ? "==== Republik med minsta invånarantal ====" : "==== Republik med största invånarantal ====";
+                minmax.ToString();
+                Console.WriteLine(x);
+                Print(minmax[i]);
+                // Så använder jag den statiska print-metoden så jag får använda den också
+            }
         }
+
+        private static Land[] MinMaxPopulation(Land[] lands)
+        {
+            Land[] sorted = lands.OrderBy(l => l.invånarantal).ToArray();
+            Land[] maxmin = new Land[] { sorted[0], sorted.Last() };
+            return maxmin;
+        }
+
         private static void Print(Land p)
         {
             Console.Write($"Land: {p.namn}\n" +
@@ -106,24 +130,5 @@
                 $"Hufvudstad: {p.huvudstad}\n    " +
                 $"Invånare: {p.invånarantal}\n\n");
         }
-
     }
 }
-
-//14. Ändra loopen så att den även listar indexet. Stagea, committa och pusha!
-//15. Gör en for-loop som letar reda på republiken med minsta och största invånarantal och
-//skriver ut endast dessa, med en utskrift likt:
-
-/*==== Republik med minsta invånarantal ====
-Land: San Marino
- styrestyp: republik
- huvudstad: San Marino
- invånarantal: 33600
-==== Republik med största invånarantal ====
-Land: Tyskland
- styrestyp: republik
- huvudstad: Berlin
- invånarantal: 83783902*/
-
-//Stagea, committa och pusha!
-//Nu bör du ha 8 commits till github.
