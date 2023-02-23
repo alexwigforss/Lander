@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Xml.Linq;
-
-namespace D14_1_1_Länder
+﻿namespace D14_1_1_Länder
 {
     internal class Program
     {
@@ -19,6 +15,27 @@ namespace D14_1_1_Länder
                     $"    Styre: {styrestyp}\n    " +
                     $"Hufvudstad: {huvudstad}\n    " +
                     $"Invånare: {invånarantal}\n\n");
+            }
+            public void PrintOnly(string what)
+            {
+                switch (what)
+                {
+                    case "Land":
+                        Console.Write($"{namn} ");
+                        break;
+                    case "Styre":
+                        Console.Write($"{styrestyp} ");
+                        break;
+                    case "Hufvudstad":
+                        Console.Write($"{huvudstad} ");
+                        break;
+                    case "Invånare":
+                        Console.Write($"{invånarantal} ");
+                        break;
+                    default:
+                        Console.Write($"Ej godkänd parameter");
+                        break;
+                }
             }
         }
         static void Main(string[] args)
@@ -54,6 +71,15 @@ namespace D14_1_1_Länder
             // Fick skriva en statisk metod i bas-klassen för att få detta att funka
             // Action<Land> action = new Action<Land>(Print);
             // Array.ForEach(countries, action);
+
+            // 13 Skapa en for-loop som listar alla republiker (d.v.s. skriver ut endast namnet på dem).
+            var republics = from l in countries where l.styrestyp == "republik" select l;
+
+            foreach (Land item in republics)
+            {
+                item.PrintOnly("Land");
+            }
+            Console.WriteLine("\när alla republiker.");
         }
         private static void Print(Land p)
         {
@@ -62,10 +88,10 @@ namespace D14_1_1_Länder
                 $"Hufvudstad: {p.huvudstad}\n    " +
                 $"Invånare: {p.invånarantal}\n\n");
         }
+
     }
 }
 
-//13. Skapa en for-loop som listar alla republiker (d.v.s. skriver ut endast namnet på dem).
 //Stagea, committa och pusha!
 //14. Ändra loopen så att den även listar indexet. Stagea, committa och pusha!
 //15. Gör en for-loop som letar reda på republiken med minsta och största invånarantal och
