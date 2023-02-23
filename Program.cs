@@ -17,7 +17,7 @@ namespace D14_1_1_Länder
                 Console.Write($"Land: {namn}\n" +
                     $"    Styre: {styrestyp}\n    " +
                     $"Hufvudstad: {huvudstad}\n    " +
-                    $"Invånare: { invånarantal}\n\n");
+                    $"Invånare: {invånarantal}\n\n");
             }
         }
         static void Main(string[] args)
@@ -31,16 +31,20 @@ namespace D14_1_1_Länder
             sv.Print();
             ty.Print();
             sm.Print();
+
+            //11. Skapa en array av 7 länder, och tilldela 0 till 2 av arrayen värdena i sverige och tyskland
+            Land[] countries = new Land[7];
+            countries[0] = sv;
+            countries[1] = ty;
+            countries[2] = sm;
+            countries[3] = new Land("Danmark", "monarki", "Köpenhamn", 5928364);
+            countries[4] = new Land("Italien", "republik", "Rom", 58853482);
+            countries[5] = new Land("Tjekien", "republik", "Prag", 10551219);
+            countries[6] = new Land("Rumänien", "republik", "Bukarest", 19760314);
         }
     }
 }
 
-//11. Skapa en array av 7 länder, och tilldela 0 till 2 av arrayen värdena i sverige och tyskland
-//och sanMarino! Direkt-tilldela de fyra övriga indexen i arrayen värdena:
-//Danmark monarki Köpenhamn 5928364
-//Italien republik Rom 58853482
-//Tjekien republik San Marino 10551219
-//Rumänien republik Bukarest 19760314
 //Stagea, committa och pusha!
 //12. Skapa en foreach-loop som går igenom alla element i arrayen och skriver ut länderna en
 //efter en. Stagea, committa och pusha!
