@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Xml.Linq;
 
 namespace D14_1_1_Länder
@@ -8,8 +9,8 @@ namespace D14_1_1_Länder
         // 8. Skapa en klass Land för länder med attributen namn, styrestyp, huvudstad, invånarantal.
         class Land
         {
-            string namn, styrestyp, huvudstad;
-            int invånarantal;
+            public string namn, styrestyp, huvudstad;
+            public int invånarantal;
             public Land(string n, string s, string h, int i) { namn = n; styrestyp = s; huvudstad = h; invånarantal = i; }
             // 10. Skapa en (vanlig) publik metod Print i Land som skriver ut landet.
             public void Print()
@@ -41,13 +42,29 @@ namespace D14_1_1_Länder
             countries[4] = new Land("Italien", "republik", "Rom", 58853482);
             countries[5] = new Land("Tjekien", "republik", "Prag", 10551219);
             countries[6] = new Land("Rumänien", "republik", "Bukarest", 19760314);
+
+            // 12 Skapa en foreach-loop som går igenom alla element i arrayen och skriver ut länderna en
+            foreach (var item in countries)
+            {
+                item.Print();
+            }
+
+            // Avstickare. Ville testa Array.Foreach varianten med som någon nämnde på tidigare lektion
+            // https://learn.microsoft.com/en-us/dotnet/api/system.array.foreach?view=net-7.0
+            // Fick skriva en statisk metod i bas-klassen för att få detta att funka
+            // Action<Land> action = new Action<Land>(Print);
+            // Array.ForEach(countries, action);
+        }
+        private static void Print(Land p)
+        {
+            Console.Write($"Land: {p.namn}\n" +
+                $"    Styre: {p.styrestyp}\n    " +
+                $"Hufvudstad: {p.huvudstad}\n    " +
+                $"Invånare: {p.invånarantal}\n\n");
         }
     }
 }
 
-//Stagea, committa och pusha!
-//12. Skapa en foreach-loop som går igenom alla element i arrayen och skriver ut länderna en
-//efter en. Stagea, committa och pusha!
 //13. Skapa en for-loop som listar alla republiker (d.v.s. skriver ut endast namnet på dem).
 //Stagea, committa och pusha!
 //14. Ändra loopen så att den även listar indexet. Stagea, committa och pusha!
