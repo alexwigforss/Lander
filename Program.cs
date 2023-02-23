@@ -9,18 +9,20 @@ namespace D14_1_1_Länder
         {
             string namn, styrestyp, huvudstad;
             int invånarantal;
+            public Land(string n, string s, string h, int i) { namn = n; styrestyp = s; huvudstad = h; invånarantal = i; }
         }
         static void Main(string[] args)
         {
+            //9. Instansiera tre länder sverige och tyskland och sanMarino och deras data med:
+            Land sv = new Land("Sverige", "monarki", "Stockholm", 10512820);
+            Land ty = new Land("Tyskland", "republik", "Berlin", 83783902);
+            Land sm = new Land("San Marino", "republik", "San Marino", 33600);
+            /*Stagea, committa och pusha!*/
             Console.WriteLine("Hello, World!");
         }
     }
 }
-//9. Instansiera tre länder sverige och tyskland och sanMarino och deras data med:
-//Sverige monarki Stockholm 10512820
-//Tyskland republik Berlin 83783902
-//San Marino republik San Marino 33600
-//Stagea, committa och pusha!
+
 //10. Skapa en (vanlig) publik metod Print i Land som skriver ut landet. Skriv ut sverige och
 //tyskland och sanMarino! Stagea, committa och pusha!
 //11. Skapa en array av 7 länder, och tilldela 0 till 2 av arrayen värdena i sverige och tyskland
