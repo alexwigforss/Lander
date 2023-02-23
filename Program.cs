@@ -1,15 +1,24 @@
 ﻿using System;
+using System.Xml.Linq;
 
 namespace D14_1_1_Länder
 {
     internal class Program
     {
-        // 8. Skapa en klass Land för länder med attributen namn, styrestyp, huvudstad, invånarantal. Skapa ett publikt github-repo Lander för programmet.
+        // 8. Skapa en klass Land för länder med attributen namn, styrestyp, huvudstad, invånarantal.
         class Land
         {
             string namn, styrestyp, huvudstad;
             int invånarantal;
             public Land(string n, string s, string h, int i) { namn = n; styrestyp = s; huvudstad = h; invånarantal = i; }
+            // 10. Skapa en (vanlig) publik metod Print i Land som skriver ut landet.
+            public void Print()
+            {
+                Console.Write($"Land: {namn}\n" +
+                    $"    Styre: {styrestyp}\n    " +
+                    $"Hufvudstad: {huvudstad}\n    " +
+                    $"Invånare: { invånarantal}\n\n");
+            }
         }
         static void Main(string[] args)
         {
@@ -17,14 +26,15 @@ namespace D14_1_1_Länder
             Land sv = new Land("Sverige", "monarki", "Stockholm", 10512820);
             Land ty = new Land("Tyskland", "republik", "Berlin", 83783902);
             Land sm = new Land("San Marino", "republik", "San Marino", 33600);
-            /*Stagea, committa och pusha!*/
-            Console.WriteLine("Hello, World!");
+
+            // 10_b Skriv ut sverige, tyskland och sanMarino! Stagea, committa och pusha!
+            sv.Print();
+            ty.Print();
+            sm.Print();
         }
     }
 }
 
-//10. Skapa en (vanlig) publik metod Print i Land som skriver ut landet. Skriv ut sverige och
-//tyskland och sanMarino! Stagea, committa och pusha!
 //11. Skapa en array av 7 länder, och tilldela 0 till 2 av arrayen värdena i sverige och tyskland
 //och sanMarino! Direkt-tilldela de fyra övriga indexen i arrayen värdena:
 //Danmark monarki Köpenhamn 5928364
