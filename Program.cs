@@ -126,8 +126,8 @@ namespace D14_1_1_Länder
         private static void Print(Land p)
         {
             Console.Write($"Land: {p.namn}\n" +
-                $"    Styre: {p.styrestyp}\n    " +
-                $"Hufvudstad: {p.huvudstad}\n    " +
+                $"  Styre: {p.styrestyp}\n  " +
+                $"Hufvudstad: {p.huvudstad}\n  " +
                 $"Invånare: {p.invånarantal}\n\n");
         }
     }
